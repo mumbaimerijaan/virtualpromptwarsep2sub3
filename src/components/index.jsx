@@ -4,6 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { ROUTES } from '../lib/routes';
 import logoImg from '../assets/logo.png';
 import heroImg from '../assets/hero.png';
+import miiLogo from '../assets/make-in-india-gears.png';
 
 export const ActionItem = memo(({ icon: Icon, title, iconColorClass, iconBgClass, hasBorder = true, onClick }) => {
   return (
@@ -288,8 +289,8 @@ export const UpdatesCard = ({ onClick, t }) => (
 
 export const Footer = () => (
   <footer className="py-6 flex items-center justify-center gap-3 border-t border-slate-100 mt-auto bg-[#F8FAFC]">
-    <div className="w-16 h-12 flex items-center justify-center">
-      <img src="https://www.makeinindia.com/foundation/assets/images/mii-logo.png" alt="Make in India" className="w-full h-full object-contain" />
+    <div className="w-16 h-12 flex items-center justify-center opacity-90">
+        <img src={miiLogo} alt="Make in India" className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} />
     </div>
     <div className="h-6 w-px bg-slate-300"></div>
     <p className="text-[11px] font-medium text-slate-500">
