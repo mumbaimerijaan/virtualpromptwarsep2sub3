@@ -182,7 +182,7 @@ export const Hero = ({ t }) => {
           <img 
             src={heroImg} 
             alt="" 
-            className="w-full h-auto object-contain drop-shadow-2xl" 
+            className="w-full h-auto object-contain" 
             aria-hidden="true" 
             onError={(e) => e.target.style.display='none'} 
           />
