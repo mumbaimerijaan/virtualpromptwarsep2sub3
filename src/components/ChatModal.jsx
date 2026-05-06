@@ -411,7 +411,7 @@ export const ChatModal = ({ isOpen, onClose, t, lang, faqData }) => {
         <div className="bg-white py-3 border-t border-slate-50 rounded-b-3xl mt-auto">
           <div className="flex items-center justify-center gap-1.5 opacity-60">
              <div className="w-12 h-10 flex items-center justify-center">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Make_In_India_Logo.svg" alt="Make in India" className="w-full h-full object-contain" />
+                 <img src="https://www.makeinindia.com/foundation/assets/images/mii-logo.png" alt="Make in India" className="w-full h-full object-contain" />
              </div>
              <span className="text-[10px] font-medium text-slate-500">A Make in India initiative to increase voter awareness</span>
           </div>

@@ -288,8 +288,8 @@ export const UpdatesCard = ({ onClick, t }) => (
 
 export const Footer = () => (
   <footer className="py-6 flex items-center justify-center gap-3 border-t border-slate-100 mt-auto bg-[#F8FAFC]">
-    <div className="w-12 h-10 flex items-center justify-center">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Make_In_India_Logo.svg" alt="Make in India" className="w-full h-full object-contain" />
+    <div className="w-16 h-12 flex items-center justify-center">
+      <img src="https://www.makeinindia.com/foundation/assets/images/mii-logo.png" alt="Make in India" className="w-full h-full object-contain" />
     </div>
     <div className="h-6 w-px bg-slate-300"></div>
     <p className="text-[11px] font-medium text-slate-500">
