@@ -1,6 +1,6 @@
 import React, { useState, Suspense, useEffect, useMemo } from 'react';
 import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
-import { Header, Hero, ActionCardList, TrustBadge, UpdatesCard, EvaluationCard, FloatingAssistant, Footer, BottomNav } from './components';
+import { Header, Hero, ActionCardList, TrustBadge, UpdatesCard, FloatingAssistant, Footer, BottomNav } from './components';
 import ScrollToTop from './components/ScrollToTop';
 import { ChatModal } from './components/ChatModal';
 import { RouteAnnouncer } from './components/RouteAnnouncer';
@@ -109,7 +109,6 @@ function HomePage({ t }) {
       <Hero t={t} />
       <ActionCardList onAction={handleAction} t={t} />
       <UpdatesCard onClick={() => handleAction('updates')} t={t} />
-      <EvaluationCard onClick={() => handleAction('report_issue')} t={t} />
       <FloatingAssistant onClick={() => handleAction('intent_input')} t={t} />
       <TrustBadge t={t} />
     </main>

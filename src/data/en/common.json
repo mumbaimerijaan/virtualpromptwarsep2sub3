@@ -34,13 +34,8 @@
     "subtitle": "Voting on 07 May 2024",
     "button": "View all updates"
   },
-  "evaluationCard": {
-    "title": "Election Process Evaluation",
-    "description": "Help us improve the democratic experience by sharing feedback on your voting journey.",
-    "button": "Report Friction / Give Feedback"
-  },
   "footer": {
-    "note": "An initiative of Election Commission of India"
+    "note": "A Make in India initiative to increase voter awareness"
   },
   "floatingAssistant": {
     "title": "Need help?",

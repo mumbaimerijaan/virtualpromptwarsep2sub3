@@ -3,7 +3,7 @@ import { X, Send, UserPlus, Search, Edit3, CheckSquare, BookOpen, CheckCircle2, 
 import { useNavigate } from 'react-router-dom';
 import botImg from '../assets/bot.png';
 import botBgImg from '../assets/bot-bg.png';
-import { classifyIntent } from '../lib/gemini';
+
 import { ChatService } from '../services/chat.service';
 import { ROUTES } from '../lib/routes';
 import { initFirebase } from '../lib/firebase';
@@ -189,16 +189,6 @@ export const ChatModal = ({ isOpen, onClose, t, lang, faqData }) => {
         return;
       }
 
-      let recaptchaToken = '';
-      const recaptchaAction = 'chat_message';
-
-      try {
-          if (window.grecaptcha && window.grecaptcha.enterprise) {
-              recaptchaToken = await window.grecaptcha.enterprise.execute(import.meta.env.VITE_RECAPTCHA_SITE_KEY, { action: recaptchaAction });
-          }
-      } catch (err) {
-          console.error("reCAPTCHA execution failed:", err);
-      }
 
       const response = await ChatService.sendToAI({
         prompt: userMessage,
@@ -208,8 +198,6 @@ export const ChatModal = ({ isOpen, onClose, t, lang, faqData }) => {
           content: m.content,
           timestamp: Date.now()
         })),
-        recaptchaToken,
-        recaptchaAction,
         currentLanguage: lang
       });
       
@@ -422,10 +410,10 @@ export const ChatModal = ({ isOpen, onClose, t, lang, faqData }) => {
 
         <div className="bg-white py-3 border-t border-slate-50 rounded-b-3xl mt-auto">
           <div className="flex items-center justify-center gap-1.5 opacity-60">
-             <div className="w-4 h-4 flex items-center justify-center">
-                 <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India" className="w-full h-full object-contain" />
+             <div className="w-12 h-10 flex items-center justify-center">
+                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Make_In_India_Logo.svg" alt="Make in India" className="w-full h-full object-contain" />
              </div>
-             <span className="text-[10px] font-medium text-slate-500">An initiative of Election Commission of India</span>
+             <span className="text-[10px] font-medium text-slate-500">A Make in India initiative to increase voter awareness</span>
           </div>
         </div>
       </div>

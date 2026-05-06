@@ -16,8 +16,6 @@ export interface ChatMessage {
 export interface ChatRequest {
   prompt: string;
   history?: ChatMessage[];
-  recaptchaToken: string;
-  recaptchaAction: string;
   currentLanguage?: string;
 }
 

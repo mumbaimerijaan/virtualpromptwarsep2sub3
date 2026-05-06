@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Menu, Globe, ChevronRight, UserPlus, Search, Edit3, CheckSquare, BookOpen, MessageSquare, ShieldCheck, Megaphone, Bot, Clock, ShieldAlert, Fingerprint, Home as HomeIcon, Star } from 'lucide-react';
+import { Menu, Globe, ChevronRight, UserPlus, Search, Edit3, CheckSquare, BookOpen, MessageSquare, ShieldCheck, Megaphone, Bot, Clock, Home as HomeIcon, Star } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ROUTES } from '../lib/routes';
 import logoImg from '../assets/logo.png';
@@ -285,40 +285,15 @@ export const UpdatesCard = ({ onClick, t }) => (
   </div>
 );
 
-export const EvaluationCard = ({ onClick, t }) => (
-  <div className="bg-indigo-50 border border-indigo-100 rounded-[32px] p-6 mb-10 relative overflow-hidden group transition-all hover:shadow-lg hover:shadow-indigo-500/5">
-    <div className="relative z-10">
-      <div className="flex items-center gap-3 mb-4">
-        <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-indigo-600 shadow-sm">
-          <ShieldAlert size={20} />
-        </div>
-        <h3 className="font-bold text-indigo-900 text-[16px]">{t?.evaluationCard?.title}</h3>
-      </div>
-      <p className="text-[13px] text-indigo-900/60 font-medium leading-relaxed mb-6 max-w-[240px]">
-        {t?.evaluationCard?.description}
-      </p>
-      <button 
-        onClick={onClick}
-        className="w-full bg-white text-indigo-600 py-3.5 rounded-2xl font-bold text-[14px] shadow-sm hover:bg-indigo-50 transition-colors flex items-center justify-center gap-2 border border-indigo-100/50"
-      >
-        {t?.evaluationCard?.button} <ChevronRight size={16} />
-      </button>
-    </div>
-    {/* Abstract background deco */}
-    <div className="absolute right-[-20px] bottom-[-20px] opacity-10 pointer-events-none group-hover:scale-110 transition-transform">
-      <Fingerprint size={120} className="text-indigo-900" />
-    </div>
-  </div>
-);
 
 export const Footer = () => (
   <footer className="py-6 flex items-center justify-center gap-3 border-t border-slate-100 mt-auto bg-[#F8FAFC]">
-    <div className="w-8 h-10 flex items-center justify-center opacity-80 mix-blend-multiply">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/55/Emblem_of_India.svg" alt="Emblem of India" className="w-full h-full object-contain" onError={(e) => e.target.style.display='none'} />
+    <div className="w-12 h-10 flex items-center justify-center">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/Make_In_India_Logo.svg" alt="Make in India" className="w-full h-full object-contain" />
     </div>
     <div className="h-6 w-px bg-slate-300"></div>
     <p className="text-[11px] font-medium text-slate-500">
-      An initiative of Election Commission of India
+      A Make in India initiative to increase voter awareness
     </p>
   </footer>
 );
