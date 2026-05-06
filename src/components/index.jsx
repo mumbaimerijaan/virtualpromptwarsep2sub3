@@ -162,7 +162,7 @@ import sparkImg from '../assets/spark.png';
 
 export const Hero = ({ t }) => {
   return (
-    <div className="relative mt-2 mb-6 px-6 py-8 bg-white rounded-[32px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
+    <div className="relative mt-2 mb-6 bg-white rounded-[32px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)] overflow-hidden">
       <div className="flex items-end justify-between gap-6">
         {/* Left column: Text */}
         <div className="flex-1 pb-2">
