@@ -73,7 +73,7 @@ export const FeaturedCard = memo(({ badge, title, description, onClick }) => {
   );
 });
 
-export const Header = ({ currentLang, onLangChange }) => {
+export const Header = ({ currentLang, onLangChange, t }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === ROUTES.HOME;
@@ -89,57 +89,69 @@ export const Header = ({ currentLang, onLangChange }) => {
 
   return (
     <header className="w-full flex justify-between items-center py-5 relative">
-      <div className="absolute top-0 left-0 opacity-40 pointer-events-none">
-        <span className="text-[9px] font-mono text-slate-400">v1.1.0</span>
+      <div className="flex gap-3 items-center z-10">
+        <div className="w-12 h-12 overflow-hidden flex items-center justify-center flex-shrink-0">
+          <img src={logoImg} alt="Matdaan Saathi Logo" className="w-[100%] h-[100%] object-contain" onError={(e) => e.target.style.display='none'} />
+        </div>
+        <div>
+          <div className="flex items-center gap-1">
+            <h1 className="text-lg font-bold text-[#1A237E] leading-tight">Matdaan</h1>
+            <h1 className="text-lg font-bold text-emerald-500 leading-tight">Saathi</h1>
+          </div>
+          <p className="text-[9px] text-slate-400 mt-0.5 font-medium tracking-wide">
+            {t?.hero?.tagline} • <span className="font-mono">v1.1.0</span>
+          </p>
+        </div>
       </div>
-      <div className="w-10">
+      
+      <div className="flex items-center gap-3">
         {!isHomePage && (
           <button 
             aria-label="Go to Home" 
             onClick={() => navigate(ROUTES.HOME)}
-            className="p-1 -ml-1 text-slate-800 focus:outline-none hover:text-indigo-600 transition-colors"
+            className="p-1.5 bg-white border border-slate-200 rounded-full text-slate-800 focus:outline-none hover:text-indigo-600 transition-colors shadow-sm"
           >
-            <HomeIcon size={26} strokeWidth={2} />
+            <HomeIcon size={20} strokeWidth={2} />
           </button>
         )}
-      </div>
-      
-      <div className="relative">
-        <button 
-          onClick={() => setIsLangOpen(!isLangOpen)}
-          aria-label={`Select language. Currently ${currentLangLabel}`}
-          className="flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 rounded-full hover:bg-slate-50 focus:outline-none bg-white shadow-sm transition-all"
-        >
-          <Globe size={16} className="text-indigo-600" />
-          <span className="font-semibold text-[13px] text-slate-700">{currentLangLabel}</span>
-          <ChevronRight size={14} className={`text-slate-400 transition-transform ${isLangOpen ? 'rotate-90' : ''}`} />
-        </button>
+        
+        <div className="relative">
+          <button 
+            onClick={() => setIsLangOpen(!isLangOpen)}
+            aria-label={`Select language. Currently ${currentLangLabel}`}
+            className="flex items-center gap-1.5 px-3 py-1.5 border border-slate-200 rounded-full hover:bg-slate-50 focus:outline-none bg-white shadow-sm transition-all"
+          >
+            <Globe size={16} className="text-indigo-600" />
+            <span className="font-semibold text-[13px] text-slate-700">{currentLangLabel}</span>
+            <ChevronRight size={14} className={`text-slate-400 transition-transform ${isLangOpen ? 'rotate-90' : ''}`} />
+          </button>
 
-        {isLangOpen && (
-          <>
-            <div 
-              className="fixed inset-0 z-40" 
-              onClick={() => setIsLangOpen(false)}
-            />
-            <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 z-50 overflow-hidden py-1 animate-in fade-in zoom-in-95 duration-100 origin-top-right">
-              {languages.map((lang) => (
-                <button
-                  key={lang.code}
-                  onClick={() => {
-                    onLangChange(lang.code);
-                    setIsLangOpen(false);
-                  }}
-                  className={`w-full text-left px-4 py-3 text-[14px] font-medium transition-colors hover:bg-slate-50 flex items-center justify-between ${
-                    currentLang === lang.code ? 'text-indigo-600 bg-indigo-50/50' : 'text-slate-700'
-                  }`}
-                >
-                  {lang.label}
-                  {currentLang === lang.code && <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />}
-                </button>
-              ))}
-            </div>
-          </>
-        )}
+          {isLangOpen && (
+            <>
+              <div 
+                className="fixed inset-0 z-40" 
+                onClick={() => setIsLangOpen(false)}
+              />
+              <div className="absolute right-0 mt-2 w-48 bg-white rounded-2xl shadow-xl border border-slate-100 z-50 overflow-hidden py-1 animate-in fade-in zoom-in-95 duration-100 origin-top-right">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      onLangChange(lang.code);
+                      setIsLangOpen(false);
+                    }}
+                    className={`w-full text-left px-4 py-3 text-[14px] font-medium transition-colors hover:bg-slate-50 flex items-center justify-between ${
+                      currentLang === lang.code ? 'text-indigo-600 bg-indigo-50/50' : 'text-slate-700'
+                    }`}
+                  >
+                    {lang.label}
+                    {currentLang === lang.code && <div className="w-1.5 h-1.5 rounded-full bg-indigo-600" />}
+                  </button>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
       </div>
     </header>
   );
@@ -149,35 +161,31 @@ import sparkImg from '../assets/spark.png';
 
 export const Hero = ({ t }) => {
   return (
-    <div className="relative pt-2 pb-6">
-      {/* Brand & Illustration area */}
-      <div className="flex justify-between items-start mb-10">
-        <div className="flex gap-3 items-center z-10">
-          <div className="w-14 h-14 overflow-hidden flex items-center justify-center flex-shrink-0">
-            <img src={logoImg} alt="Matdaan Saathi Logo" className="w-[100%] h-[100%] object-contain" onError={(e) => e.target.style.display='none'} />
+    <div className="relative pt-6 pb-10">
+      <div className="flex items-end justify-between gap-6">
+        {/* Left column: Text */}
+        <div className="flex-1 pb-2">
+          <div className="flex items-center gap-2 mb-3">
+            <h2 className="text-[36px] font-bold text-[#1A237E] tracking-tight leading-tight">
+              {t?.hero?.intent?.split('...')[0]}<span className="text-emerald-500">...</span>
+            </h2>
+            <img src={sparkImg} alt="" className="w-6 h-6" aria-hidden="true" />
           </div>
-          <div>
-            <h1 className="text-xl font-bold text-[#1A237E] leading-tight">Matdaan</h1>
-            <h1 className="text-xl font-bold text-emerald-500 leading-tight">Saathi</h1>
-            <p className="text-[10px] text-slate-400 mt-0.5 font-medium tracking-wide">{t?.hero?.tagline}</p>
-          </div>
+          <p className="text-slate-500 text-[15px] font-medium leading-relaxed max-w-[280px]">
+            {t?.hero?.subtitle}
+          </p>
         </div>
-        <div className="absolute right-[-20px] top-[10px] w-[50%] h-32 pointer-events-none z-0">
-          <img src={heroImg} alt="" className="w-full h-full object-contain object-right" aria-hidden="true" onError={(e) => e.target.style.display='none'} />
-        </div>
-      </div>
 
-      {/* Main Intent text */}
-      <div className="text-center relative mt-4">
-        <div className="flex items-center justify-center gap-2">
-          <h2 className="text-[32px] font-bold text-[#1A237E] tracking-tight">
-            {t?.hero?.intent?.split('...')[0]}<span className="text-emerald-500 tracking-normal">...</span>
-          </h2>
-          <img src={sparkImg} alt="" className="w-5 h-5 -mt-6" aria-hidden="true" />
+        {/* Right column: Image */}
+        <div className="w-[42%] flex-shrink-0">
+          <img 
+            src={heroImg} 
+            alt="" 
+            className="w-full h-auto object-contain drop-shadow-2xl" 
+            aria-hidden="true" 
+            onError={(e) => e.target.style.display='none'} 
+          />
         </div>
-        <p className="text-slate-500 max-w-[240px] mx-auto text-[14px] leading-snug mt-2">
-          {t?.hero?.subtitle}
-        </p>
       </div>
     </div>
   );

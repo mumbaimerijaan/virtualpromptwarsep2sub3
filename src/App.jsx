@@ -109,7 +109,6 @@ function HomePage({ t }) {
       <Hero t={t} />
       <ActionCardList onAction={handleAction} t={t} />
       <UpdatesCard onClick={() => handleAction('updates')} t={t} />
-      <FloatingAssistant onClick={() => handleAction('intent_input')} t={t} />
       <TrustBadge t={t} />
     </main>
   );
@@ -149,7 +148,7 @@ function App() {
       <div className="w-full md:w-[60%] bg-[#F9FAFB] min-h-screen flex flex-col">
         <ScrollToTop />
         <div className="flex-1 overflow-y-auto px-5 scroll-smooth">
-          <Header currentLang={language} onLangChange={changeLanguage} />
+          <Header currentLang={language} onLangChange={changeLanguage} t={t.common} />
           
           <div className="flex-1 flex flex-col">
             <Suspense fallback={<LoadingSkeleton />}>
