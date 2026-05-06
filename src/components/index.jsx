@@ -99,8 +99,9 @@ export const Header = ({ currentLang, onLangChange, t }) => {
             <h1 className="text-lg font-bold text-emerald-500 leading-tight">Saathi</h1>
           </div>
           <p className="text-[9px] text-slate-400 mt-0.5 font-medium tracking-wide">
-            {t?.hero?.tagline} • <span className="font-mono">v1.1.0</span>
+            {t?.hero?.tagline}
           </p>
+          <p className="text-[8px] font-mono text-slate-300 mt-0.5 leading-none">v1.1.0</p>
         </div>
       </div>
       
@@ -161,7 +162,7 @@ import sparkImg from '../assets/spark.png';
 
 export const Hero = ({ t }) => {
   return (
-    <div className="relative pt-6 pb-10">
+    <div className="relative mt-2 mb-6 px-6 py-8 bg-white rounded-[32px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.02)]">
       <div className="flex items-end justify-between gap-6">
         {/* Left column: Text */}
         <div className="flex-1 pb-2">
